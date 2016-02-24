@@ -1,12 +1,12 @@
 r"""
-ari is a problem solver and tries his best to solve your problems
+mrwolf is a problem solver and tries his best to solve your problems
 
 Usage:
-  ari z
-  ari b
-  ari f
-  ari t
-  ari k
+  mrwolf z
+  mrwolf b
+  mrwolf f
+  mrwolf t
+  mrwolf k
 
 Options:
   -h --help   Show this screen.
@@ -21,7 +21,7 @@ import json
 __version__ = '0.0.3'
 
 def main():
-  '''ari is a problem solver and tries his best to solve your problems'''
+  '''mrwolf is a problem solver and tries his best to solve your problems'''
   arguments = docopt(__doc__, version=__version__)
 
 if __name__ == '__main__':
