@@ -2,12 +2,11 @@ r"""
 mrwolf is a problem solver and tries his best to solve your problems
 
 Usage:
-  mrwolf (z | zsh) (-g | --google)
   mrwolf (b | bash) (-g | --google)
   mrwolf (f | fish) (-g | --google)
-  mrwolf (t | tcsh) (-g | --google)
   mrwolf (k | ksh) (-g | --google)
-  mrwolf (on | off)
+  mrwolf (t | tcsh) (-g | --google)
+  mrwolf (z | zsh) (-g | --google)
   mrwolf
 
 Options:
@@ -21,6 +20,7 @@ import subprocess
 from docopt import docopt
 import os
 import json
+import webbrowser
 
 history_files {
   'bash' : '~/.bash_history',
@@ -30,38 +30,52 @@ history_files {
   'zsh' : '~/.zsh_history'
 }
 
-try:
-  bash_mode_file = open(os.path.join(os.path.expanduser("~"), './mrwolf/config.json'), 'r')
-  bash_mode = json.loads(bash_mode_file.read())['bash_mode']
-  bash_mode_file.close()
-except:
-  bash_mode_file = open(os.path.join(os.path.expanduser("~"), './mrwolf/config.json'), 'w')
-  bash_mode_file.write(json.dumps({'bash_mode' : False}))
-  bash_mode = False
-  bash_mode_file.close()
-
-
 __version__ = '0.0.3'
 
-def toggle(on, off):
-  if on and bash_mode:
-    print 'bash mode already on'
-  elif on and not bash_mode:
-    bash_mode = True
-  elif off and not bash_mode:
-    print 'bash mode already off'
-  elif off and bash_mode:
-    bash_mode = False
+def google(command, error):
+  url = 'https://www.google.com/search?q=%s' %(command.split(" ")[0] +  " " + error)
+  webbrowser.open(url)
 
-  bash_mode_file = open(os.path.join(os.path.expanduser("~"), './mrwolf/config.json'), 'w')
-  bash_mode_file.write(json.dumps({'bash_mode' bash_mode}))
-  bash_mode_file.close()
+def fetch_error(shell, google = False):
+  filename = history_files[shell]
+  try:
+    history_file = open(filename, 'r')
+    history_file.close()
+  except (OSError, IOError) as e:
+    print 'File Not FOund'
+    return
+  except:
+    print 'Unkown error'
+    return
+  command = subprocess.check_output(['tail', '-1', filename])
+  try:
+    subprocess.check_output(command, stderr=subprocess.STDOUT, shell=True)
+  except subprocess.CalledProcessError as e:
+    error = e.output
+    if google:
+      return google(command, errror[:30])
+    else:
+      return stackoverflow(command, error[:30])
+  except:
+    print 'Something unforseen happened.'
 
-def fetch_error(history_file):
+
 
 def main():
   '''mrwolf is a problem solver and tries his best to solve your problems'''
   arguments = docopt(__doc__, version=__version__)
+  if arguments['b'] or arguments['bash']:
+    fetch_error('bash', arguments['-g'] or arguments['--google'])
+  elif arguments['f'] or arguments['fish']:
+    fetch_error('fish', arguments['-g'] or arguments['--google'])
+  elif arguments['k'] or arguments['ksh']:
+    fetch_error('ksh', arguments['-g'] or arguments['--google'])
+  elif arguments['t'] or arguments['tcsh']:
+    fetch_error('tcsh', arguments['-g'] or arguments['--google'])
+  elif arguments['zsh'] or arguments['zsh']:
+    fetch_error('zsh', arguments['-g'] or arguments['--google'])
+  else:
+    print __doc__
 
 if __name__ == '__main__':
   main()
