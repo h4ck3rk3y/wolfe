@@ -50,9 +50,12 @@ def on():
   command = """PROMPT_COMMAND='last="$(cat /tmp/last)";lasterr="$(cat /tmp/lasterr)"; exec >/dev/tty; exec > >(tee /tmp/last); exec 2>/dev/tty; exec 2> >(tee /tmp/lasterr)'"""
   try:
     shutil.copyfile(os.path.join(os.path.expanduser('~'), '.bashrc'), os.path.join(os.path.expanduser('~'), '.bashrc.bak'))
-    basrhc_file = open(os.path.join(os.path.expanduser('~'), '.basrhc'), 'a')
+    basrhc_file = open(os.path.join(os.path.expanduser('~'), '.bashrc'), 'a')
+    basrhc_file.write("\n")
     basrhc_file.write(command)
-    os.system("exec bash")
+    basrhc_file.write("\n")
+    basrhc_file.close()
+    os.system("exec bash;")
   except (OSError, IOError) as e:
     print "bashrc Not Found"
   except:
@@ -62,17 +65,17 @@ def on():
 def off():
   command = """PROMPT_COMMAND='last="$(cat /tmp/last)";lasterr="$(cat /tmp/lasterr)"; exec >/dev/tty; exec > >(tee /tmp/last); exec 2>/dev/tty; exec 2> >(tee /tmp/lasterr)'"""
   try:
-    shutil.copyfile(os.path.join(os.path.expanduser('~'), '.bashrc'), os.path.join(os.path.expanduser('~'), '.bashrc.bak'))
     basrhc_file  = open(os.path.join(os.path.expanduser('~'), '.bashrc'), 'r')
     lines = basrhc_file.readlines()
     basrhc_file.close()
     basrhc_file  = open(os.path.join(os.path.expanduser('~'), '.bashrc'), 'w')
-
     for line in lines:
-      if line!= command or line!= command + "\n":
+      if not command in line:
         basrhc_file.write(line)
     basrhc_file.close()
+    os.system("kill -9 " + str(os.getppid()))
   except:
+    import traceback; traceback.print_exc();
     print 'Unexpected error'
     print 'Back up of bashrc in ~/.bashrc.bak'
 
