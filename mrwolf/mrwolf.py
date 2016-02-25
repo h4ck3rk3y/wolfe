@@ -45,9 +45,6 @@ def last(google=False):
     print e.output
     return
 
-
-
-
 def on():
   command = """PROMPT_COMMAND='last="$(cat /tmp/last)";lasterr="$(cat /tmp/lasterr)"; exec >/dev/tty; exec > >(tee /tmp/last); exec 2>/dev/tty; exec 2> >(tee /tmp/lasterr)'"""
   try:
