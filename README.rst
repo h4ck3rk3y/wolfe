@@ -46,12 +46,19 @@ Ask Mr. Wolfe to record errors, ask politely
 
     $ wolfe on
 
-Ask him to solve the last problem you faced
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Ask him to solve the last problem you faced via stackoverflow
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code:: bash
 
     $ wolfe $l
+
+Ask him to solve the last problem you faced via google
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code:: bash
+
+    $ wolfe $l --google
 
 Tell him his services aren’t needed any more
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -94,4 +101,4 @@ Open sourced under the **MIT License**
 .. _issue tracker: https://github.com/Zephrys/monica
 
 .. |image0| image:: http://i.imgur.com/ffMQrWB.png
-.. |image1| image:: http://i.imgur.com/D4iLyJw.gif?1
+.. |image1| image:: http://i.imgur.com/L6lXDyG.gif?1

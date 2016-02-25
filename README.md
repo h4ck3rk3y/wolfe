@@ -5,7 +5,7 @@
 :wolf: i am winston wolfe, i solve problems
 
 ## Demo
-![](http://i.imgur.com/D4iLyJw.gif?1)
+![](http://i.imgur.com/L6lXDyG.gif?1)
 
 ## Features
 
