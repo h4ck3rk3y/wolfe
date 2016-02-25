@@ -4,7 +4,7 @@ i am winston wolfe, i solve problems
 Usage:
   wolfe (on | off)
   wolfe (l | last)
-  wolfe [LAST ...] [-g | --google]
+  wolfe [QUERY ...] [-g | --google]
 
 Options:
   -h --help   Show this screen.
@@ -28,7 +28,7 @@ history_files = {
   'zsh' : '.zsh_history'
 }
 
-__version__ = '0.0.4'
+__version__ = '0.0.5'
 
 def last(last_arr, google=False):
 	error = " ".join(last_arr[2:])
@@ -90,8 +90,8 @@ def main():
   elif arguments['off']:
     off()
     print 'Mr. Wolfe says goodbye!'
-  elif arguments['LAST']:
-  	last(arguments['LAST'], arguments['-g'] or arguments['--google'])
+  elif arguments['QUERY']:
+  	last(arguments['QUERY'], arguments['-g'] or arguments['--google'])
   else:
     print __doc__
 

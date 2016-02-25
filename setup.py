@@ -10,7 +10,7 @@ if os.environ.get('USER', '') == 'vagrant':
 
 setup(
   name='wolfe',
-  version='0.0.4',
+  version='0.0.5',
   description='i am winston wolfe, i solve problems',
   long_description=open('README.rst').read(),
   author='Gyanendra Mishra',

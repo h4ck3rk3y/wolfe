@@ -37,11 +37,30 @@ $ python setup.py install
 $ wolfe on
 ```
 
-### Ask him to solve the last problem you faced
+### Ask him to solve the last problem you faced via stackoverflow
 
 ```bash
-$ wolfe $l
+$ wolfe key error python dictionary
 ```
+
+### Ask him to search for the given string on stackoverflow
+
+```bash
+$ wolfe IndentationError
+```
+
+### Ask him to solve the last problem you faced via google
+
+```bash
+$ wolfe $l --google
+```
+
+### Ask him to search for the given string on google
+
+```bash
+$ wolfe key error python dictionary --google
+```
+
 
 ### Tell him his services aren't needed any more
 
