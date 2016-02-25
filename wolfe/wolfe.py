@@ -1,5 +1,5 @@
 r"""
-wolfe is a bash problem solver, who will do anything to solve your problems
+i am winston wolfe, i solve problems
 
 Usage:
   wolfe (on | off)
@@ -79,12 +79,17 @@ def google_search(error):
   webbrowser.open(url)
 
 def main():
-  '''wolfe is a bash problem solver, who will do anything to solve your problems'''
+  '''i am winston wolfe, i solve problems'''
   arguments = docopt(__doc__, version=__version__)
   if arguments['on']:
     on()
+    print 'Mr. Wolfe is at your service'
+    print 'If any of your programs run into an error'
+    print 'use wolfe $le'
+    print 'To undo the changes made by mr wolfe in your  bashrc, do wolfe off'
   elif arguments['off']:
     off()
+    print 'Mr. Wolfe says goodbye!'
   elif arguments['LAST']:
   	last(arguments['LAST'], arguments['-g'] or arguments['--google'])
   else:
