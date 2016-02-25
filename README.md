@@ -70,6 +70,8 @@ If your terminal is messed up do `cp ~/.bashrc.bak ~/.bashrc`
 Mr. Wolfe doesn't change `.bashrc` when the terminal is exited, do `wolfe off`
 to undo the changes to the `.bashrc` file.
 
+The pip package runs on my api key, incase it stops working please add your own api key to api.py and install from source.
+
 ## Contributing
 
 Use the [issue tracker](https://github.com/h4ck3rk3y/wolfe) to file bugs or push new features.
