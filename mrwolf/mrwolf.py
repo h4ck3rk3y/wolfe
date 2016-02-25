@@ -38,9 +38,9 @@ def last(google=False):
   try:
     output subprocess.check_output("echo $lasterr", shell = True, stderr = subprocess.STDOUT)
     if google:
-      google(output.split(" "), output[len(output.split(" ")):])
+      google(output[:30])
     else:
-      stackoverflow((output.split(" "), output[len(output.split(" ")):]))
+      stackoverflow(output[:30])
   except subprocess.CalledProcessError as e:
     print e.output
     return
@@ -96,9 +96,9 @@ def fetch_error(shell, google = False):
   except subprocess.CalledProcessError as e:
     error = e.output
     if google:
-      return google(command, errror[:30])
+      return google(errror[:30])
     else:
-      return stackoverflow(command, error[:30])
+      return stackoverflow(error[:30])
   except:
     print 'Something unforseen happened.'
 
