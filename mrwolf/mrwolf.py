@@ -2,13 +2,13 @@ r"""
 mrwolf is a problem solver and tries his best to solve your problems
 
 Usage:
-  mrwolf (b | bash) (-g | --google)
-  mrwolf (f | fish) (-g | --google)
-  mrwolf (k | ksh) (-g | --google)
-  mrwolf (t | tcsh) (-g | --google)
-  mrwolf (z | zsh) (-g | --google)
+  mrwolf (b | bash) [-g | --google]
+  mrwolf (f | fish) [-g | --google]
+  mrwolf (k | ksh) [-g | --google]
+  mrwolf (t | tcsh) [-g | --google]
+  mrwolf (z | zsh) [-g | --google]
   mrwolf (on | off)
-  mrwolf (l | last) (-g | --google)
+  mrwolf (l | last) <-g | --google>
   mrwolf
 
 Options:
@@ -23,20 +23,21 @@ from docopt import docopt
 import os
 import shutil
 import webbrowser
+from api import stackoverflow
 
-history_files {
-  'bash' : '~/.bash_history',
-  'fish' : '~/.config/fish/fish_history',
-  'ksh' : '~/.ksh_history',
-  'tcsh' : '~/.tcsh_history',
-  'zsh' : '~/.zsh_history'
+history_files = {
+  'bash' : '.bash_history',
+  'fish' : '.config/fish/fish_history',
+  'ksh' : '.ksh_history',
+  'tcsh' : '.tcsh_history',
+  'zsh' : '.zsh_history'
 }
 
 __version__ = '0.0.3'
 
 def last(google=False):
   try:
-    output subprocess.check_output("echo $lasterr", shell = True, stderr = subprocess.STDOUT)
+    output = subprocess.check_output("echo $lasterr", shell = True, stderr = subprocess.STDOUT)
     if google:
       google(output[:30])
     else:
@@ -48,7 +49,7 @@ def last(google=False):
 def on():
   command = """PROMPT_COMMAND='last="$(cat /tmp/last)";lasterr="$(cat /tmp/lasterr)"; exec >/dev/tty; exec > >(tee /tmp/last); exec 2>/dev/tty; exec 2> >(tee /tmp/lasterr)'"""
   try:
-    shutil.copyfile(os.path.join(os.path.expanduser(~)  '.bashrc'), os.path.join(os.path.expanduser(~)  '.bashrc.bak'))
+    shutil.copyfile(os.path.join(os.path.expanduser('~'), '.bashrc'), os.path.join(os.path.expanduser('~'), '.bashrc.bak'))
     basrhc_file = open(os.path.join(os.path.expanduser('~'), '.basrhc'), 'a')
     basrhc_file.write(command)
     os.system("exec bash")
@@ -61,7 +62,7 @@ def on():
 def off():
   command = """PROMPT_COMMAND='last="$(cat /tmp/last)";lasterr="$(cat /tmp/lasterr)"; exec >/dev/tty; exec > >(tee /tmp/last); exec 2>/dev/tty; exec 2> >(tee /tmp/lasterr)'"""
   try:
-    shutil.copyfile(os.path.join(os.path.expanduser(~)  '.bashrc'), os.path.join(os.path.expanduser(~)  '.bashrc.bak'))
+    shutil.copyfile(os.path.join(os.path.expanduser('~'), '.bashrc'), os.path.join(os.path.expanduser('~'), '.bashrc.bak'))
     basrhc_file  = open(os.path.join(os.path.expanduser('~'), '.bashrc'), 'r')
     lines = basrhc_file.readlines()
     basrhc_file.close()
@@ -81,16 +82,18 @@ def google(command, error):
 
 def fetch_error(shell, google = False):
   filename = history_files[shell]
+  filename = os.path.join(os.path.expanduser('~'), filename)
   try:
     history_file = open(filename, 'r')
     history_file.close()
   except (OSError, IOError) as e:
-    print 'File Not FOund'
+    print 'File Not Found'
     return
   except:
     print 'Unkown error'
     return
   command = subprocess.check_output(['tail', '-1', filename])
+  print command
   try:
     subprocess.check_output(command, stderr=subprocess.STDOUT, shell=True)
   except subprocess.CalledProcessError as e:
@@ -115,7 +118,7 @@ def main():
     fetch_error('ksh', arguments['-g'] or arguments['--google'])
   elif arguments['t'] or arguments['tcsh']:
     fetch_error('tcsh', arguments['-g'] or arguments['--google'])
-  elif arguments['zsh'] or arguments['zsh']:
+  elif arguments['z'] or arguments['zsh']:
     fetch_error('zsh', arguments['-g'] or arguments['--google'])
   elif arguments['on']:
     on()
