@@ -4,16 +4,9 @@ from tabulate import tabulate
 headers = {'Accept' : 'application/json'}
 
 
-def stackoverflow(error,tag):
+def stackoverflow(error):
 
-	tags = tag.split()
-	if tags[0] == "sudo":
-		res_tag = tags[1]
-	else:
-		res_tag = tags[0]
-
-
-	url = 'https://api.stackexchange.com/2.2/search/advanced?order=desc&migrated=False&sort=activity&body=%s&tags=%s&accepted=True&closed=False&site=stackoverflow&key=BFKqtwHwltVKHrSIDKgf6Q((' % (error,res_tag)
+	url = 'https://api.stackexchange.com/2.2/search/advanced?order=desc&migrated=False&sort=activity&body=%s&accepted=True&closed=False&site=stackoverflow&key=BFKqtwHwltVKHrSIDKgf6Q((' % (error)
 	try:
 		response = requests.get(url, headers = headers)
 
