@@ -58,7 +58,7 @@ $ wolfe off
 ### Help
 
 ```bash
-$ monica --help
+$ wolfe --help
 ```
 
 ### Note
@@ -72,7 +72,7 @@ to undo the changes to the `.bashrc` file.
 
 ## Contributing
 
-Use the [issue tracker](https://github.com/Zephrys/monica) to file bugs or push new features.
+Use the [issue tracker](https://github.com/h4ck3rk3y/wolfe) to file bugs or push new features.
 
 ## License
 
