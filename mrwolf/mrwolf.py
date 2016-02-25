@@ -2,14 +2,9 @@ r"""
 mrwolf is a problem solver and tries his best to solve your problems
 
 Usage:
-  mrwolf (b | bash) [-g | --google]
-  mrwolf (f | fish) [-g | --google]
-  mrwolf (k | ksh) [-g | --google]
-  mrwolf (t | tcsh) [-g | --google]
-  mrwolf (z | zsh) [-g | --google]
   mrwolf (on | off)
-  mrwolf (l | last) <-g | --google>
-  mrwolf
+  mrwolf (l | last)
+  mrwolf [LAST ...] [-g | --google]
 
 Options:
   -h --help   Show this screen.
@@ -35,19 +30,19 @@ history_files = {
 
 __version__ = '0.0.3'
 
-def last(google=False):
-  try:
-    output = subprocess.check_output("echo $lasterr", shell = True, stderr = subprocess.STDOUT)
-    if google:
-      google(output[:30])
-    else:
-      stackoverflow(output[:30])
-  except subprocess.CalledProcessError as e:
-    print e.output
-    return
+def last(last_arr, google=False):
+	error = " ".join(last_arr[2:])
+	position_of_last_colon = error.rfind(":")
+	error_name = error[:position_of_last_colon].rfind(" ")
+	error = error[error_name + 1:]
+	if google:
+		google_search(error)
+	else:
+		stackoverflow(error)
+
 
 def on():
-  command = """PROMPT_COMMAND='last="$(cat /tmp/last)";lasterr="$(cat /tmp/lasterr)"; exec >/dev/tty; exec > >(tee /tmp/last); exec 2>/dev/tty; exec 2> >(tee /tmp/lasterr)'"""
+  command = """PROMPT_COMMAND='l="$(cat /tmp/lasterr)";exec 2>/dev/tty; exec 2> >(tee /tmp/lasterr)'"""
   try:
     shutil.copyfile(os.path.join(os.path.expanduser('~'), '.bashrc'), os.path.join(os.path.expanduser('~'), '.bashrc.bak'))
     basrhc_file = open(os.path.join(os.path.expanduser('~'), '.bashrc'), 'a')
@@ -63,7 +58,7 @@ def on():
     print 'Back up of bashrc in ~/.bashrc.bak'
 
 def off():
-  command = """PROMPT_COMMAND='last="$(cat /tmp/last)";lasterr="$(cat /tmp/lasterr)"; exec >/dev/tty; exec > >(tee /tmp/last); exec 2>/dev/tty; exec 2> >(tee /tmp/lasterr)'"""
+  command = """PROMPT_COMMAND='l="$(cat /tmp/lasterr)";exec 2>/dev/tty; exec 2> >(tee /tmp/lasterr)'"""
   try:
     basrhc_file  = open(os.path.join(os.path.expanduser('~'), '.bashrc'), 'r')
     lines = basrhc_file.readlines()
@@ -79,54 +74,19 @@ def off():
     print 'Unexpected error'
     print 'Back up of bashrc in ~/.bashrc.bak'
 
-def google(command, error):
-  url = 'https://www.google.com/search?q=%s' %(command.split(" ")[0] +  " " + error)
+def google_search(error):
+  url = 'https://www.google.com/search?q=%s' %(error)
   webbrowser.open(url)
-
-def fetch_error(shell, google = False):
-  filename = history_files[shell]
-  filename = os.path.join(os.path.expanduser('~'), filename)
-  try:
-    history_file = open(filename, 'r')
-    history_file.close()
-  except (OSError, IOError) as e:
-    print 'File Not Found'
-    return
-  except:
-    print 'Unkown error'
-    return
-  command = subprocess.check_output(['tail', '-1', filename])
-  print command
-  try:
-    subprocess.check_output(command, stderr=subprocess.STDOUT, shell=True)
-  except subprocess.CalledProcessError as e:
-    error = e.output
-    if google:
-      return google(errror[:30])
-    else:
-      return stackoverflow(error[:30])
-  except:
-    print 'Something unforseen happened.'
-
-
 
 def main():
   '''mrwolf is a problem solver and tries his best to solve your problems'''
   arguments = docopt(__doc__, version=__version__)
-  if arguments['b'] or arguments['bash']:
-    fetch_error('bash', arguments['-g'] or arguments['--google'])
-  elif arguments['f'] or arguments['fish']:
-    fetch_error('fish', arguments['-g'] or arguments['--google'])
-  elif arguments['k'] or arguments['ksh']:
-    fetch_error('ksh', arguments['-g'] or arguments['--google'])
-  elif arguments['t'] or arguments['tcsh']:
-    fetch_error('tcsh', arguments['-g'] or arguments['--google'])
-  elif arguments['z'] or arguments['zsh']:
-    fetch_error('zsh', arguments['-g'] or arguments['--google'])
-  elif arguments['on']:
+  if arguments['on']:
     on()
   elif arguments['off']:
     off()
+  elif arguments['LAST']:
+  	last(arguments['LAST'], arguments['-g'] or arguments['--google'])
   else:
     print __doc__
 
