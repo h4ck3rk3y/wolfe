@@ -1,10 +1,10 @@
 r"""
-mrwolf is a problem solver and tries his best to solve your problems
+wolfe is a bash problem solver, who will do anything to solve your problems
 
 Usage:
-  mrwolf (on | off)
-  mrwolf (l | last)
-  mrwolf [LAST ...] [-g | --google]
+  wolfe (on | off)
+  wolfe (l | last)
+  wolfe [LAST ...] [-g | --google]
 
 Options:
   -h --help   Show this screen.
@@ -79,7 +79,7 @@ def google_search(error):
   webbrowser.open(url)
 
 def main():
-  '''mrwolf is a problem solver and tries his best to solve your problems'''
+  '''wolfe is a bash problem solver, who will do anything to solve your problems'''
   arguments = docopt(__doc__, version=__version__)
   if arguments['on']:
     on()
