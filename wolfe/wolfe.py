@@ -82,11 +82,11 @@ def main():
   '''i am winston wolfe, i solve problems'''
   arguments = docopt(__doc__, version=__version__)
   if arguments['on']:
-    on()
     print 'Mr. Wolfe is at your service'
     print 'If any of your programs run into an error'
     print 'use wolfe $le'
     print 'To undo the changes made by mr wolfe in your  bashrc, do wolfe off'
+    on()
   elif arguments['off']:
     off()
     print 'Mr. Wolfe says goodbye!'
