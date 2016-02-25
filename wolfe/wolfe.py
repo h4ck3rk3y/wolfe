@@ -28,7 +28,7 @@ history_files = {
   'zsh' : '.zsh_history'
 }
 
-__version__ = '0.0.3'
+__version__ = '0.0.4'
 
 def last(last_arr, google=False):
 	error = " ".join(last_arr[2:])
@@ -84,7 +84,7 @@ def main():
   if arguments['on']:
     print 'Mr. Wolfe is at your service'
     print 'If any of your programs run into an error'
-    print 'use wolfe $le'
+    print 'use wolfe $l'
     print 'To undo the changes made by mr wolfe in your  bashrc, do wolfe off'
     on()
   elif arguments['off']:
