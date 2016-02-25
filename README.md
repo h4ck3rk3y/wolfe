@@ -40,13 +40,7 @@ $ wolfe on
 ### Ask him to solve the last problem you faced via stackoverflow
 
 ```bash
-$ wolfe key error python dictionary
-```
-
-### Ask him to search for the given string on stackoverflow
-
-```bash
-$ wolfe IndentationError
+$ wolfe $l
 ```
 
 ### Ask him to solve the last problem you faced via google
@@ -54,13 +48,6 @@ $ wolfe IndentationError
 ```bash
 $ wolfe $l --google
 ```
-
-### Ask him to search for the given string on google
-
-```bash
-$ wolfe key error python dictionary --google
-```
-
 
 ### Tell him his services aren't needed any more
 

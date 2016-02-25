@@ -28,11 +28,14 @@ history_files = {
   'zsh' : '.zsh_history'
 }
 
-__version__ = '0.0.5'
+__version__ = '0.0.6'
 
 def last(last_arr, google=False):
 	error = " ".join(last_arr[2:])
 	position_of_last_colon = error.rfind(":")
+	if position_of_last_colon <0:
+		print 'Nothing wrong with the previous command!'
+		return
 	error_name = error[:position_of_last_colon].rfind(" ")
 	error = error[error_name + 1:]
 	if google:
