@@ -24,7 +24,7 @@ $ pip install wolfe
 ### 2: From Source
 
 ```bash
-$ git clone https://github.com/Zephrys/wolfe
+$ git clone https://github.com/h4ck3rk3y/wolfe
 $ cd wolfe/
 $ python setup.py install
 ```
@@ -74,7 +74,7 @@ The pip package runs on my api key, incase it stops working please add your own 
 
 ## Contributing
 
-Use the [issue tracker](https://github.com/h4ck3rk3y/wolfe) to file bugs or push new features.
+Use the [issue tracker](https://github.com/h4ck3rk3y/wolfe/issues) to file bugs or push new features.
 
 ## License
 
