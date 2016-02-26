@@ -32,7 +32,7 @@ Installation
 
 .. code:: bash
 
-    $ git clone https://github.com/Zephrys/wolfe
+    $ git clone https://github.com/h4ck3rk3y/wolfe 
     $ cd wolfe/
     $ python setup.py install
 
