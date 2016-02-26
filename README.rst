@@ -98,7 +98,7 @@ License
 Open sourced under the **MIT License**
 
 .. _PIP: https://pypi.python.org/pypi/wolfe
-.. _issue tracker: https://github.com/h4ck3rk3y/wolfe
+.. _issue tracker: https://github.com/h4ck3rk3y/wolfe/issues
 
 .. |image0| image:: http://i.imgur.com/ffMQrWB.png
 .. |image1| image:: http://i.imgur.com/L6lXDyG.gif?1

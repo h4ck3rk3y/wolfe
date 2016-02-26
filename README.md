@@ -74,7 +74,7 @@ The pip package runs on my api key, incase it stops working please add your own 
 
 ## Contributing
 
-Use the [issue tracker](https://github.com/h4ck3rk3y/wolfe) to file bugs or push new features.
+Use the [issue tracker](https://github.com/h4ck3rk3y/wolfe/issues) to file bugs or push new features.
 
 ## License
 
