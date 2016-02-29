@@ -48,11 +48,10 @@ def on():
   command = """PROMPT_COMMAND='l="$(cat /tmp/lasterr)";exec 2>/dev/tty; exec 2> >(tee /tmp/lasterr)'"""
   try:
     shutil.copyfile(os.path.join(os.path.expanduser('~'), '.bashrc'), os.path.join(os.path.expanduser('~'), '.bashrc.bak'))
-    basrhc_file = open(os.path.join(os.path.expanduser('~'), '.bashrc'), 'a')
-    basrhc_file.write("\n")
-    basrhc_file.write(command)
-    basrhc_file.write("\n")
-    basrhc_file.close()
+    with open(os.path.join(os.path.expanduser('~'), '.bashrc'), 'a') as basrhc_file:
+        basrhc_file.write("\n")
+        basrhc_file.write(command)
+        basrhc_file.write("\n")
     os.system("exec bash;")
   except (OSError, IOError) as e:
     print "bashrc Not Found"
@@ -63,14 +62,12 @@ def on():
 def off():
   command = """PROMPT_COMMAND='l="$(cat /tmp/lasterr)";exec 2>/dev/tty; exec 2> >(tee /tmp/lasterr)'"""
   try:
-    basrhc_file  = open(os.path.join(os.path.expanduser('~'), '.bashrc'), 'r')
-    lines = basrhc_file.readlines()
-    basrhc_file.close()
-    basrhc_file  = open(os.path.join(os.path.expanduser('~'), '.bashrc'), 'w')
-    for line in lines:
-      if not command in line:
-        basrhc_file.write(line)
-    basrhc_file.close()
+    with open(os.path.join(os.path.expanduser('~'), '.bashrc'), 'r') as basrhc_file:
+        lines = basrhc_file.readlines()
+    with open(os.path.join(os.path.expanduser('~'), '.bashrc'), 'w') as basrhc_file:
+        for line in lines:
+            if not command in line:
+                basrhc_file.write(line)
     os.system("kill -9 " + str(os.getppid()))
   except:
     import traceback; traceback.print_exc();
