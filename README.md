@@ -1,5 +1,15 @@
 # wolfe
 
+[![PyPI Version](http://badge.kloud51.com/pypi/v/wolfe.svg)](https://pypi.python.org/pypi/wolfe)
+[![PyPI Status](http://badge.kloud51.com/pypi/s/wolfe.svg)](https://pypi.python.org/pypi/wolfe)
+[![PyPI Wheel](http://badge.kloud51.com/pypi/w/wolfe.svg)](https://pypi.python.org/pypi/wolfe)
+[![PyPI License](http://badge.kloud51.com/pypi/l/wolfe.svg)](https://pypi.python.org/pypi/wolfe)
+[![PyPI Format](http://badge.kloud51.com/pypi/f/wolfe.svg)](https://pypi.python.org/pypi/wolfe)
+[![PyPI Py_versions](http://badge.kloud51.com/pypi/p/wolfe.svg)](https://pypi.python.org/pypi/wolfe)
+[![PyPI Downloads](http://badge.kloud51.com/pypi/d/wolfe.svg)](https://pypi.python.org/pypi/wolfe)
+[![PyPI Implementation](http://badge.kloud51.com/pypi/i/wolfe.svg)](https://pypi.python.org/pypi/wolfe)
+[![PyPI Egg](http://badge.kloud51.com/pypi/e/wolfe.svg)](https://pypi.python.org/pypi/wolfe)
+
 ![](http://i.imgur.com/ffMQrWB.png)
 
 :wolf: i am winston wolfe, i solve problems

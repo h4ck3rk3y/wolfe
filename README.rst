@@ -1,6 +1,42 @@
 wolfe
 =====
 
+.. image:: http://badge.kloud51.com/pypi/v/wolfe.svg
+    :target: https://pypi.python.org/pypi/wolfe
+    :alt: PyPI Version
+    
+.. image:: http://badge.kloud51.com/pypi/s/wolfe.svg
+    :target: https://pypi.python.org/pypi/wolfe
+    :alt: PyPI Status
+
+.. image:: http://badge.kloud51.com/pypi/w/wolfe.svg
+    :target: https://pypi.python.org/pypi/wolfe
+    :alt: PyPI Wheel
+
+.. image:: http://badge.kloud51.com/pypi/l/wolfe.svg
+    :target: https://pypi.python.org/pypi/wolfe
+    :alt: PyPI License
+
+.. image:: http://badge.kloud51.com/pypi/f/wolfe.svg
+    :target: https://pypi.python.org/pypi/wolfe
+    :alt: PyPI Format
+
+.. image:: http://badge.kloud51.com/pypi/p/wolfe.svg
+    :target: https://pypi.python.org/pypi/wolfe
+    :alt: PyPI Py_versions
+
+.. image:: http://badge.kloud51.com/pypi/d/wolfe.svg
+    :target: https://pypi.python.org/pypi/wolfe
+    :alt: PyPI Downloads
+
+.. image:: http://badge.kloud51.com/pypi/i/wolfe.svg
+    :target: https://pypi.python.org/pypi/wolfe
+    :alt: PyPI Implementation
+
+.. image:: http://badge.kloud51.com/pypi/e/wolfe.svg
+    :target: https://pypi.python.org/pypi/wolfe
+    :alt: PyPI Egg
+
 |image0|
 
 🐺 i am winston wolfe, i solve problems
