@@ -28,7 +28,7 @@ history_files = {
   'zsh' : '.zsh_history'
 }
 
-__version__ = '0.0.8'
+__version__ = '0.0.9'
 
 def last(last_arr, google=False):
 	error = " ".join(last_arr[2:])

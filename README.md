@@ -80,7 +80,10 @@ If your terminal is messed up do `cp ~/.bashrc.bak ~/.bashrc`
 Mr. Wolfe doesn't change `.bashrc` when the terminal is exited, do `wolfe off`
 to undo the changes to the `.bashrc` file.
 
-The pip package runs on my api key, incase it stops working please add your own api key to api.py and install from source.
+The pip package runs on my api key.
+
+The source now includes a support for  the environment variable `WOLFE_API_KEY`. Use this to set your own
+environment variable, fallsback to the default if environment variable not found.
 
 ## Contributing
 

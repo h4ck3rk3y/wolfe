@@ -2,10 +2,12 @@ import requests
 import webbrowser
 from tabulate import tabulate
 headers = {'Accept' : 'application/json'}
+import os
 
+key = os.environ.get('WOLFE_API_KEY', 'BFKqtwHwltVKHrSIDKgf6Q')
 
 def stackoverflow(error):
-  url = 'https://api.stackexchange.com/2.2/search/advanced?order=desc&migrated=False&sort=activity&body=%s&accepted=True&closed=False&site=stackoverflow&key=BFKqtwHwltVKHrSIDKgf6Q((' % (error)
+  url = 'https://api.stackexchange.com/2.2/search/advanced?order=desc&migrated=False&sort=activity&body=%s&accepted=True&closed=False&site=stackoverflow&key=%s' % (error, key)
   try:
     response = requests.get(url, headers = headers)
 
@@ -27,5 +29,6 @@ def stackoverflow(error):
       print "Api Issues"
   except:
     print "Network Issues"
+
 
 
